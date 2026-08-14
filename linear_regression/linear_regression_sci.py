@@ -32,7 +32,9 @@ def linear_regression_pipeline():
     print("MSE:", mse)
     print("R2:", r2)
 
+    #fill array of 100 values from xmin to xmax and reshape to 2d array 
     x_values = np.linspace(X.min(), X.max(), 100).reshape(-1, 1)
+    #make prediction of y values 
     y_values = pipe.predict(x_values)
 
     plt.scatter(X, y)

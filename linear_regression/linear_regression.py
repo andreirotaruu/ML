@@ -24,6 +24,7 @@ def main():
     plt.show()
 
 
+#MSE function
 def loss_function(m, b, points):
     total_error = 0
     for i in range(len(points)):
@@ -32,17 +33,22 @@ def loss_function(m, b, points):
         total_error += (y - (m * x + b)) ** 2
     return total_error / float(len(points))
 
+#gradient descenct function 
 def gradient_descent(m_now, b_now, points, L):
     m_gradient = 0
     b_gradient = 0
     
+    #loop through all points 
     n = len(points)
     for i in range(n):
         x = points.iloc[i].x
         y = points.iloc[i].y
+
+        #partial derivatives dE/dm and dE/db
         m_gradient += -2/n * (y - (m_now * x + b_now)) * x
         b_gradient += -2/n * (y - (m_now * x + b_now))
 
+    
     m = m_now - m_gradient * L
     b = b_now - b_gradient * L
     return m, b
